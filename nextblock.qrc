@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/nextblock.ico</file>
+        <file>icons/nextblock.png</file>
+        <file>sounds/line_delete.ogg</file>
+    </qresource>
+</RCC>
