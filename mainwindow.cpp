@@ -347,7 +347,7 @@ void MainWindow::updateGameStatSlot(const GameStat &a_stat)
     ui->labelDeltaScore->setText("Score from last block: " + QString::number(a_stat.deltaScore));
     ui->labelSpeed->setText("Speed: " + QString::number(a_stat.speed));
     ui->labelBlocks->setText("Blocks: "  + QString::number(a_stat.blocks));
-    ui->labelDelLines->setText("Deleted Lines: "  + QString::number(a_stat.delLines));
+    ui->labelDelLines->setText("Deleted lines: "  + QString::number(a_stat.delLines));
     ui->labelEfficiency->setText("Efficiency: " + QString::number(a_stat.eff, 'f', 2) + " %");
     ui->labelScorePerBlock->setText("Average score per block: " + QString::number(a_stat.scoreblock, 'f', 2));
 
