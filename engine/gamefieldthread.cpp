@@ -211,7 +211,7 @@ void GameFieldThread::calcScore()
     m_score += calcDeltaScore();
 
     m_scoreBlock = (float)m_score / (m_elementCount + 1); /// +1 is needed as the last block/score is not counted in the
-    /// main cycle until is placed in place
+                                                          /// main cycle until is placed in place
 }
 
 uint32_t GameFieldThread::calcDeltaScore()
@@ -220,9 +220,9 @@ uint32_t GameFieldThread::calcDeltaScore()
 
     float speedQ = 1.0 + (float)m_speed * params.speedQ;
 
-    float elementScore = params.score * speedQ;
+    float elementScore = (float)params.score * speedQ;
 
-    float lineScore = ((1.0 + (float)m_curDelLinesCount)/2) * LINE_DEL_SCORE * speedQ;
+    float lineScore = ((1.0 + (float)m_curDelLinesCount)/2) * (float)LINE_DEL_SCORE * speedQ;
 
     if (m_dropped)
     {
