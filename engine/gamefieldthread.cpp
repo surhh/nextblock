@@ -250,6 +250,8 @@ void GameFieldThread::rotateElement()
 
         //// TODO: Fixed - This may cause incorrect behavior when shape reaches existing blocks at bottom
         setElementPositionMatrix(m_currentElement, m_curElemPos);
+
+        m_downNext = canMoveCurrentElementDownNext();
     }
 }
 
