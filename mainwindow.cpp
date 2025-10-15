@@ -332,7 +332,7 @@ void MainWindow::updateFieldsSlot(const FieldMatrix& a_matrix, const Element& a_
     update();
 }
 
-void MainWindow::updateGameStatSlot(const GameStat &a_stat)
+void MainWindow::updateGameStatSlot(const GameStat& a_stat)
 {
     m_player.stat.score = a_stat.score;
     m_player.stat.blocks = a_stat.blocks;
