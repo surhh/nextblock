@@ -14,7 +14,7 @@ ScoreFile::~ScoreFile()
 
 void ScoreFile::init()
 {
-    m_fileName = "";
+    m_fileName.clear();
 
     m_statData.clear();
 }
