@@ -42,7 +42,7 @@ quint64 ScoreFile::getMinScore() const
 
     quint64 res = 0;
 
-    int size = m_statData.size();
+    size_t size = m_statData.size();
 
     if (size > 0)
     {
