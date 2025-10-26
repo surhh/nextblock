@@ -19,6 +19,14 @@ set(PROJECT_SOURCES
         mainwindow.ui
 )
 
+# windows build specific (MinGW)
+if(WIN32)
+    #set(PROJECT_WIN_RESOURCE winappicon.rc)
+    #set(PROJECT_SOURCES ${PROJECT_SOURCES} ${PROJECT_WIN_RESOURCE})
+    set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/winappicon.rc")
+endif()
+# end of windows build specific  (MinGW)
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(nextblock
         MANUAL_FINALIZATION
@@ -40,7 +48,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         updatemanager/filedownloader.cpp updatemanager/filedownloader.h updatemanager/updatechecker.cpp updatemanager/updatechecker.h
         defsui.h
 
-
+        ${app_icon_resource_windows}
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET nextblock APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -59,13 +67,6 @@ else()
         )
     endif()
 endif()
-
-# windows build specific (MinGW)
-if(WIN32)
-    set(PROJECT_WIN_RESOURCE winappicon.rc)
-    set(PROJECT_SOURCES ${PROJECT_SOURCES} ${PROJECT_WIN_RESOURCE})
-endif()
-# end of windows build specific  (MinGW)
 
 target_link_libraries(nextblock PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts Qt${QT_VERSION_MAJOR}::Xml Qt${QT_VERSION_MAJOR}::Multimedia)
 
