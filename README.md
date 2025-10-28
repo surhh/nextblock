@@ -2,6 +2,9 @@
 
 <img width="1232" height="1059" alt="nextblock1_0_screenshot_1" src="https://github.com/user-attachments/assets/0dc7f2b5-e8b9-49f2-a820-6260bbcf0c03" />
 
+# Download
+
+Download the latest Linux and Windows releases: https://github.com/surhh/nextblock/releases/latest
 
 
 # How to build 
