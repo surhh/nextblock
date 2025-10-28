@@ -18,4 +18,4 @@
   The nextblock execuatble will be located in the build directory.
 
 ----------------------------------------------------------------
-  *Note: Compiled binary packages for both Linux and Windows will be available later.*
+  *Note: Recommended screen resolution is 1920x1080 or higher.*
