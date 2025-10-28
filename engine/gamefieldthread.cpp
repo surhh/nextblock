@@ -37,16 +37,9 @@ GameFieldThread::~GameFieldThread()
     ///delete m_player;
 }
 
-/*
-void initRnd()
-{
-    std::srand(time(nullptr));
-}
-*/
-
 void GameFieldThread::init()
 {
-    initRnd();
+    ///initRnd();
 
     std::memset(m_field.data, 0, sizeof(m_field.data));
 
@@ -382,8 +375,8 @@ void GameFieldThread::generateElements(bool a_rotate)
 
     if (a_rotate)
     {
-        uint8_t r1 = genRndNumber() % 4; ///std::rand() % 4;
-        uint8_t r2 = genRndNumber() % 4; ///std::rand() % 4;
+        uint8_t r1 = genRndNumber() / 2; ///% 4; ///std::rand() % 4;
+        uint8_t r2 = genRndNumber() / 2; ///% 4; ///std::rand() % 4;
 
         for (uint8_t i = 0; i < r1; ++i)
         {
@@ -405,7 +398,7 @@ void GameFieldThread::generateElementsN(bool a_rotate)
 
         if (a_rotate)
         {
-            uint8_t r = genRndNumber() % 4; ///std::rand() % 4;
+            uint8_t r = genRndNumber() / 2; ///% 4; ///std::rand() % 4;
 
             for (uint8_t j = 0; j < r; ++j)
             {

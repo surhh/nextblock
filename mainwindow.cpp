@@ -41,8 +41,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ///initRnd();
-
     m_scoreFile.init();
     m_scoreFile.setFileName(SCORE_FILE_PATH);
     m_scoreFile.loadFile();
@@ -159,8 +157,6 @@ void MainWindow::on_startButton_clicked()
     m_lineSeries->clear();
     m_axisX->setTickCount(10);
     m_axisX->setRange(1, 10);
-
-    ///initRnd();
 
     m_scoreFile.init();
     m_scoreFile.setFileName(SCORE_FILE_PATH);

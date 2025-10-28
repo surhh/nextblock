@@ -34,7 +34,7 @@
 
 #define GENERATED_BLOCKS_NUMBER     (4)
 
-void initRnd();
+///void initRnd();
 uint32_t genRndNumber();
 
 struct FieldMatrix

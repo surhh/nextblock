@@ -7,16 +7,20 @@
 #include <ctime>
 #include <random>
 
-static std::mt19937 rnd;
+thread_local std::random_device rndDevice;
+thread_local std::mt19937 rnd(rndDevice());
+thread_local std::uniform_int_distribution<uint32_t> rndDistribution(0, COUNT_SHAPE - 1);
 
+/*
 void initRnd()
 {
-    rnd.seed(time(nullptr));
+    ///rnd.seed(time(nullptr));
 }
+*/
 
 uint32_t genRndNumber()
 {
-    return rnd();
+    return rndDistribution(rnd); //rnd();
 }
 
 Element::~Element()
@@ -102,7 +106,7 @@ void Element::setShape(const ShapeMatrix& a_matrix)
 
 void Element::generateRandomShape()
 {
-    uint8_t type = genRndNumber() % COUNT_SHAPE; /// std::rand() % COUNT_SHAPE;
+    uint8_t type = genRndNumber();/// % COUNT_SHAPE; /// std::rand() % COUNT_SHAPE;
 
     setShape(type);
 }
