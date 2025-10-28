@@ -37,18 +37,16 @@ GameFieldThread::~GameFieldThread()
     ///delete m_player;
 }
 
-void initRandom()
+/*
+void initRnd()
 {
     std::srand(time(nullptr));
-
-    //mt19937 mt(time(nullptr));
 }
-
-
+*/
 
 void GameFieldThread::init()
 {
-    initRandom();
+    initRnd();
 
     std::memset(m_field.data, 0, sizeof(m_field.data));
 
@@ -222,7 +220,7 @@ uint32_t GameFieldThread::calcDeltaScore()
 
     float elementScore = (float)params.score * speedQ;
 
-    float lineScore = ((1.0 + (float)m_curDelLinesCount)/2) * (float)LINE_DEL_SCORE * speedQ;
+    float lineScore = ((1.0 + (float)m_curDelLinesCount)/2.0) * (float)LINE_DEL_SCORE * speedQ;
 
     if (m_dropped)
     {
@@ -384,8 +382,8 @@ void GameFieldThread::generateElements(bool a_rotate)
 
     if (a_rotate)
     {
-        uint8_t r1 = std::rand() % 4;
-        uint8_t r2 = std::rand() % 4;
+        uint8_t r1 = genRndNumber() % 4; ///std::rand() % 4;
+        uint8_t r2 = genRndNumber() % 4; ///std::rand() % 4;
 
         for (uint8_t i = 0; i < r1; ++i)
         {
@@ -407,7 +405,7 @@ void GameFieldThread::generateElementsN(bool a_rotate)
 
         if (a_rotate)
         {
-            uint8_t r = std::rand() % 4;
+            uint8_t r = genRndNumber() % 4; ///std::rand() % 4;
 
             for (uint8_t j = 0; j < r; ++j)
             {

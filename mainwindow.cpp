@@ -33,7 +33,7 @@
 
 #define SCORE_FILE_PATH     "nextblock.scores"
 
-#define UPDATE_CHECK_URL        "https://raw.githubusercontent.com/surhh/nextblock/main/_lastversion.txt"
+#define UPDATE_CHECK_URL    "https://raw.githubusercontent.com/surhh/nextblock/main/_lastversion.txt"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    initRandom();
+    ///initRnd();
 
     m_scoreFile.init();
     m_scoreFile.setFileName(SCORE_FILE_PATH);
@@ -160,7 +160,7 @@ void MainWindow::on_startButton_clicked()
     m_axisX->setTickCount(10);
     m_axisX->setRange(1, 10);
 
-    initRandom();
+    ///initRnd();
 
     m_scoreFile.init();
     m_scoreFile.setFileName(SCORE_FILE_PATH);

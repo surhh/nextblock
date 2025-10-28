@@ -4,6 +4,21 @@
 
 #include "shape.h"
 
+#include <ctime>
+#include <random>
+
+static std::mt19937 rnd;
+
+void initRnd()
+{
+    rnd.seed(time(nullptr));
+}
+
+uint32_t genRndNumber()
+{
+    return rnd();
+}
+
 Element::~Element()
 {
 
@@ -87,7 +102,7 @@ void Element::setShape(const ShapeMatrix& a_matrix)
 
 void Element::generateRandomShape()
 {
-    uint8_t type = std::rand() % COUNT_SHAPE;
+    uint8_t type = genRndNumber() % COUNT_SHAPE; /// std::rand() % COUNT_SHAPE;
 
     setShape(type);
 }
