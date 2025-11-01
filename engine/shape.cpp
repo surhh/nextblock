@@ -7,9 +7,9 @@
 #include <ctime>
 #include <random>
 
-thread_local std::random_device rndDevice;
-thread_local std::mt19937 rnd(rndDevice());
-thread_local std::uniform_int_distribution<uint32_t> rndDistribution(0, COUNT_SHAPE - 1);
+thread_local std::random_device g_rndDevice;
+thread_local std::mt19937 g_rnd(g_rndDevice());
+thread_local std::uniform_int_distribution<uint32_t> g_rndDistribution(0, COUNT_SHAPE - 1);
 
 /*
 void initRnd()
@@ -20,7 +20,7 @@ void initRnd()
 
 uint32_t genRndNumber()
 {
-    return rndDistribution(rnd); //rnd();
+    return g_rndDistribution(g_rnd); //rnd();
 }
 
 Element::~Element()
