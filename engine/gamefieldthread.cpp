@@ -539,7 +539,7 @@ void GameFieldThread::calcEfficiency()
     }
     else
     {
-        m_efficiency =  (float)(m_delLinesCount * SURFACE_LINE * 100) / (m_elementCount * SURFACE_SHAPE);
+        m_efficiency = (float)(m_delLinesCount * SURFACE_LINE * 100) / (m_elementCount * SURFACE_SHAPE);
     }
 
     if (m_efficiency > m_maxEfficiency)
