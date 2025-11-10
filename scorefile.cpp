@@ -1,7 +1,5 @@
 #include "scorefile.h"
 
-#define MAX_TOP_SCORE_ENTRY_COUNT       (10)
-
 ScoreFile::ScoreFile()
 {
 
@@ -29,7 +27,7 @@ void ScoreFile::setFileName(const QString& a_fileName)
     m_fileName = QDir::homePath() + "/" + a_fileName;
 }
 
-void ScoreFile::addPlayer(const Player &a_player)
+void ScoreFile::addPlayer(const Player& a_player)
 {
     m_statData.push_back(a_player);
 
@@ -52,7 +50,7 @@ quint64 ScoreFile::getMinScore() const
     return res;
 }
 
-qint32 ScoreFile::findPLayerIndex(const Player &a_player) const
+qint32 ScoreFile::findPLayerIndex(const Player& a_player) const
 {
     qint32 index = 1, res = -1;
 
@@ -231,21 +229,18 @@ qint32 ScoreFile::saveFile()
 
 void ScoreFile::sortStatData()
 {
-    for (int i = 0; i < m_statData.size() - 1; ++i)
+    size_t size = m_statData.size();
+
+    for (int i = 0; i < size; ++i)
     {
-        int index = i;
-
-        for (int j = i + 1; j < m_statData.size(); ++j)
+        for (int j = 0; j < size - 1; ++j)
         {
-            if (m_statData[j].stat.score > m_statData[index].stat.score)
+            if (m_statData[j].stat.score < m_statData[i].stat.score)
             {
-                index = j;
+                Player p = m_statData[i];
+                m_statData[i] = m_statData[j];
+                m_statData[j] = p;
             }
-
-            Player p = m_statData[index];
-
-            m_statData[index] = m_statData[i];
-            m_statData[i] = p;
         }
     }
 }

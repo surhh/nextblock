@@ -13,6 +13,8 @@
 
 #include "engine/gamefieldthread.h"
 
+constexpr uint32_t MAX_TOP_SCORE_ENTRY_COUNT = 10;
+
 struct Player
 {
     QString  name;

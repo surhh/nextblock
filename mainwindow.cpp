@@ -242,11 +242,15 @@ void MainWindow::threadFinished()
 
     m_scoreFile.loadFile();
 
+    m_scoreData = m_scoreFile.getPlayersData();
+
     quint64 minScore = m_scoreFile.getMinScore();
 
     qint32 index = -1;
 
-    if (m_player.stat.score > minScore && scoreNameDlg.exec() == QDialog::Accepted)
+
+    if ((m_player.stat.score > minScore || m_scoreData.size() < MAX_TOP_SCORE_ENTRY_COUNT) &&
+        scoreNameDlg.exec() == QDialog::Accepted)
     {
         QString name = scoreNameDlg.getPlayerName();
 
