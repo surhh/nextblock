@@ -231,15 +231,15 @@ void ScoreFile::sortStatData()
 {
     size_t size = m_statData.size();
 
-    for (int i = 0; i < size; ++i)
+    for (uint32_t i = 0; i < size; ++i)
     {
-        for (int j = 0; j < size - 1; ++j)
+        for (uint32_t j = 0; j < size - 1; ++j)
         {
-            if (m_statData[j].stat.score < m_statData[i].stat.score)
+            if (m_statData[j].stat.score < m_statData[j + 1].stat.score)
             {
-                Player p = m_statData[i];
-                m_statData[i] = m_statData[j];
-                m_statData[j] = p;
+                Player p = m_statData[j];
+                m_statData[j] = m_statData[j + 1];
+                m_statData[j + 1] = p;
             }
         }
     }
