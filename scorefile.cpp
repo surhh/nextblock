@@ -231,15 +231,13 @@ void ScoreFile::sortStatData()
 {
     size_t size = m_statData.size();
 
-    for (uint32_t i = 0; i < size; ++i)
+    for (uint32_t i = 0; i < size - 1; ++i)
     {
-        for (uint32_t j = 0; j < size - 1; ++j)
+        for (uint32_t j = 0; j < size - i - 1; ++j)
         {
             if (m_statData[j].stat.score < m_statData[j + 1].stat.score)
             {
-                Player p = m_statData[j];
-                m_statData[j] = m_statData[j + 1];
-                m_statData[j + 1] = p;
+                std::swap(m_statData[j], m_statData[j + 1]);
             }
         }
     }
