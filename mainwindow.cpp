@@ -13,8 +13,6 @@
 #include <QMessageBox>
 #include <QDesktopServices>
 
-#include <iostream>
-
 /*
 #define KEY_LEFT        (Qt::Key_J)
 #define KEY_RIGHT       (Qt::Key_L)
@@ -248,25 +246,30 @@ void MainWindow::threadFinished()
 
     qint32 index = -1;
 
-
-    if ((m_player.stat.score > minScore || m_scoreData.size() < MAX_TOP_SCORE_ENTRY_COUNT) &&
-        scoreNameDlg.exec() == QDialog::Accepted)
+    if ((m_player.stat.score > minScore || m_scoreData.size() < MAX_TOP_SCORE_ENTRY_COUNT))
     {
-        QString name = scoreNameDlg.getPlayerName();
-
-        if (!name.isEmpty())
+        if (scoreNameDlg.exec() == QDialog::Accepted)
         {
-            ///QMessageBox::information(this, "NextBlock", name, QMessageBox::Ok);
+            QString name = scoreNameDlg.getPlayerName();
 
-            m_player.name = name;
+            if (!name.isEmpty())
+            {
+                m_player.name = name;
 
-            m_scoreFile.addPlayer(m_player);
-            m_scoreFile.saveFile();
+                m_scoreFile.addPlayer(m_player);
+                m_scoreFile.saveFile();
 
-            m_scoreFile.loadFile();
+                m_scoreFile.loadFile();
 
-            index = m_scoreFile.findPLayerIndex(m_player);
+                index = m_scoreFile.findPLayerIndex(m_player);
+            }
         }
+    }
+    else
+    {
+        QMessageBox::information(this, "NextBlock", "G A M E   O V E R  !!!", QMessageBox::Ok);
+
+        return;
     }
 
     m_scoreData = m_scoreFile.getPlayersData();
