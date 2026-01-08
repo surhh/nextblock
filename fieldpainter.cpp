@@ -126,9 +126,10 @@ Qt::GlobalColor FieldPainter::getElementColor(int a_shapeType)
     return m_colorMap[a_shapeType];
 }
 
-void FieldPainter::updateField(const FieldMatrix &a_matrix)
+void FieldPainter::updateField(const FieldMatrix& a_matrix)
 {
     QMutexLocker locker(&m_mutex);
+
     setFieldMatrix(a_matrix);
     update();
 }

@@ -233,6 +233,8 @@ uint32_t GameFieldThread::calcDeltaScore()
 
 void GameFieldThread::rotateElement()
 {
+    QMutexLocker locker(&m_mutex);  /// higher-level mutex checking to avoid race condition
+
     if (canRotateElement(m_rotateClock))
     {
         cleanElementPositionMatrix(m_curElemPos, false); //// TODO: Fixed - when rotating it may delete the existing blocks
@@ -248,7 +250,7 @@ void GameFieldThread::rotateElement()
 
 bool GameFieldThread::setElementPosition(const Element& a_element, const Position& a_pos, bool a_clean)
 {
-    ///QMutexLocker locker(&m_mutex); /// original place for mutex lock was here, now added where m_field is changed
+    QMutexLocker locker(&m_mutex); /// original place for mutex lock was here, now added where m_field is changed
 
     bool res = canFitElement(a_element, a_pos);
 
@@ -280,7 +282,7 @@ void GameFieldThread::setElementPositionMatrix(const Element& a_element, int8_t 
 
     ShapeMatrix shape = a_element.getShape();
 
-    QMutexLocker locker(&m_mutex);
+    /// QMutexLocker locker(&m_mutex); /// original place is here, as any action with field change is done here
 
     for (uint8_t i = 0; i < SIZE_SHAPE; ++i)
     {
@@ -539,7 +541,9 @@ void GameFieldThread::calcEfficiency()
     }
     else
     {
-        m_efficiency = (float)(m_delLinesCount * SURFACE_LINE * 100) / (m_elementCount * SURFACE_SHAPE);
+        ///m_efficiency = (float)(m_delLinesCount * SURFACE_LINE * 100) / (m_elementCount * SURFACE_SHAPE);
+        /// calculating efficiency formula looks more natural this way
+        m_efficiency = ((float)(m_delLinesCount * SURFACE_LINE) / (float)(m_elementCount * SURFACE_SHAPE)) * 100.0;
     }
 
     if (m_efficiency > m_maxEfficiency)
@@ -624,7 +628,7 @@ void GameFieldThread::run()
 {
     uint64_t timer = 0, timerSpeed = 0;
 
-    bool down = true, downNext = true;
+    bool down = true;
 
     m_downNext = true;
 
