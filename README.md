@@ -6,6 +6,7 @@
 
 Download the latest Linux and Windows releases: https://github.com/surhh/nextblock/releases/latest
 
+***Known issues: update checking stopped working on Windows***
 
 # How to build 
 
