@@ -89,7 +89,7 @@ int8_t GameFieldThread::findFirstLineToDelete() const
 {
     int8_t index = -1;
 
-    ///for (uint8_t i = FIELD_START_Y; i < FIELD_START_Y + FIELD_GAME_HEIGHT; ++i) /// original version
+    ///for (uint8_t i = FIELD_START_Y; i < FIELD_START_Y + FIELD_GAME_HEIGHT; ++i) /// original version, starting from the top
     for (uint8_t i = FIELD_START_Y + FIELD_GAME_HEIGHT - 1; i <= FIELD_START_Y + FIELD_GAME_HEIGHT; --i) /// reverse order
     {
         bool found = true;
