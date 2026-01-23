@@ -90,7 +90,7 @@ int8_t GameFieldThread::findFirstLineToDelete() const
     int8_t index = -1;
 
     ///for (uint8_t i = FIELD_START_Y; i < FIELD_START_Y + FIELD_GAME_HEIGHT; ++i) /// original version, starting from the top
-    for (uint8_t i = FIELD_START_Y + FIELD_GAME_HEIGHT - 1; i <= FIELD_START_Y + FIELD_GAME_HEIGHT; --i) /// reverse order
+    for (int32_t i = FIELD_START_Y + FIELD_GAME_HEIGHT - 1; i >= FIELD_START_Y; --i) /// reverse order
     {
         bool found = true;
 
@@ -189,7 +189,7 @@ void GameFieldThread::deleteLine(uint8_t a_pos)
 {
     QMutexLocker locker(&m_mutex);
 
-    for (uint8_t j = a_pos; j > FIELD_START_Y; --j)
+    for (int32_t j = a_pos; j >= FIELD_START_Y; --j)
     {
         for (uint8_t i = FIELD_START_X; i < FIELD_START_X + FIELD_GAME_WIDTH; ++i)
         {
